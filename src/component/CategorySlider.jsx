@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { ChevronRight, ChevronLeft } from 'lucide-react';
+import React, { useRef, useState, useEffect } from "react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 
 const categories = [
   { id: 1, name: "বই", image: "https://cdn-icons-png.flaticon.com/512/3389/3389081.png" },
@@ -11,12 +11,13 @@ const categories = [
   { id: 7, name: "Groceries", image: "https://img.freepik.com/free-photo/shopping-cart-full-food-products_23-2148288233.jpg" },
   { id: 8, name: "Gift Voucher", image: "https://img.freepik.com/free-vector/gift-card-template-with-golden-bow_23-2147926131.jpg" },
   { id: 9, name: "Academic", image: "https://img.freepik.com/free-photo/stack-books-with-graduation-cap_23-2148873932.jpg" },
+
   { id: 10, name: "Kids Zone", image: "https://img.freepik.com/free-photo/toys-collection-isolated_23-2148873954.jpg" },
-  { id: 4, name: "Beauty & Health", image: "https://img.freepik.com/free-photo/beauty-cosmetic-products-white-background_23-2148281165.jpg" },
   { id: 5, name: "Stationery", image: "https://img.freepik.com/free-photo/set-stationery-items-white-background_23-2148873913.jpg" },
   { id: 6, name: "Science Kit", image: "https://img.freepik.com/free-photo/creative-composition-with-educational-toys_23-2148873926.jpg" },
   { id: 7, name: "Groceries", image: "https://img.freepik.com/free-photo/shopping-cart-full-food-products_23-2148288233.jpg" },
-  
+  { id: 8, name: "Gift Voucher", image: "https://img.freepik.com/free-vector/gift-card-template-with-golden-bow_23-2147926131.jpg" },
+
 ];
 
 const CategorySlider = () => {
@@ -32,66 +33,79 @@ const CategorySlider = () => {
   const scroll = (direction) => {
     if (scrollRef.current) {
       const { clientWidth } = scrollRef.current;
-      const scrollAmount = direction === 'left' ? -clientWidth * 0.8 : clientWidth * 0.8;
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      const amount =
+        direction === "left" ? -clientWidth * 0.8 : clientWidth * 0.8;
+
+      scrollRef.current.scrollBy({
+        left: amount,
+        behavior: "smooth",
+      });
     }
   };
 
   return (
-    <div className="px-2 md:max-w-[75%] mx-auto py-4 lg:py-6">
-      <div className="bg-blue-50 border-y lg:border border-gray-300/70 overflow-hidden relative lg:rounded-md">
-        
-        <div className="hidden md:block p-4 lg:p-5 border-b border-gray-200 bg-white">
-          <h2 className="text-lg lg:text-xl font-bold text-gray-800">Shop By Category</h2>
+    <div className="md:max-w-[75%] w-[95%] mx-auto py-6">
+      <div className="md:bg-blue-50 md:border md:border-gray-200 overflow-hidden relative ">
+
+        {/* HEADER */}
+        <div className="hidden md:block px-5 py-3 bg-white">
+          <h2 className="text-xl font-bold text-gray-800">
+            Shop By Category
+          </h2>
         </div>
 
-        <div className="relative group px-2 lg:px-8 py-3 lg:py-8">
-          
+        {/* SLIDER */}
+        <div className="relative group  lg:px-8 lg:py-8">
+
+          {/* LEFT BUTTON */}
           {showLeftBtn && (
-            <button 
-              onClick={() => scroll('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 py-5 shadow-lg rounded-r-md hover:bg-gray-50 transition-all hidden lg:block"
+            <button
+              onClick={() => scroll("left")}
+              className="absolute left-0 cursor-pointer top-1/2 z-[100] -translate-y-1/2 z-10 bg-white  shadow-xl rounded-r-xl py-2 hover:bg-gray-50 transition hidden lg:block"
             >
-              <ChevronLeft size={32} className="text-slate-700" />
+              <ChevronLeft size={40} />
             </button>
           )}
 
-          {/* 
-              MOBILE TWO-ROW FIX:
-              1. Changed 'flex' to 'grid grid-rows-2 lg:flex lg:items-start'
-              2. Added 'grid-flow-col' to ensure items flow horizontally into rows
-          */}
-          <div 
+          {/* ITEMS */}
+          <div
             ref={scrollRef}
             onScroll={handleScrollPosition}
             className="grid grid-rows-2 grid-flow-col lg:flex lg:items-start gap-1 lg:gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory"
           >
-            {categories.map((cat, index) => (
-              <div 
-                key={`${cat.id}-${index}`} 
-                className="flex flex-col items-center w-24 lg:w-34 cursor-pointer group/item snap-start active:scale-95 transition-transform"
+            {categories.map((cat) => (
+              <div
+                key={cat.id}
+                className="flex flex-col items-center w-24 lg:w-32 cursor-pointer group/item snap-start active:scale-95 transition-all duration-300"
               >
-                <div className="w-22 h-22 lg:w-28 lg:h-28 bg-white border border-gray-100 rounded-2xl flex items-center justify-center md:p-3 p-2 transition-all duration-300 group-hover/item:shadow-md lg:group-hover/item:border-blue-200">
-                  <img 
-                    src={cat.image} 
-                    alt={cat.name} 
-                    className="max-w-full max-h-full object-contain"
+                {/* CARD */}
+                <div className="relative w-20 h-20 lg:w-28 lg:h-28 bg-gradient-to-br from-white to-slate-50 border border-gray-100 rounded-2xl flex items-center justify-center p-3 shadow-sm transition-all duration-300 group-hover/item:shadow-xl group-hover/item:-translate-y-1 group-hover/item:border-blue-200">
+
+                  {/* glow */}
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover/item:opacity-100 transition bg-blue-100 blur-2xl"></div>
+
+                  <img
+                    src={cat.image}
+                    alt={cat.name}
+                    className="relative z-10 max-w-full max-h-full object-contain transition-transform duration-300 group-hover/item:scale-110"
                   />
                 </div>
-                <span className="mt-2 lg:mt-4 text-[12px] lg:text-[15px] font-semibold text-slate-600 text-center leading-tight h-8 lg:h-10 flex items-center">
+
+                {/* TEXT */}
+                <span className="mt-2 lg:mt-3 text-[12px] lg:text-[14px] font-medium text-slate-700 text-center group-hover/item:text-blue-600 transition-colors">
                   {cat.name}
                 </span>
               </div>
             ))}
           </div>
 
-          <button 
-            onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 py-5 shadow-lg rounded-l-md hover:bg-gray-50 transition-all hidden lg:block"
+          {/* RIGHT BUTTON */}
+          <button
+            onClick={() => scroll("right")}
+            className="absolute right-0 cursor-pointer top-1/2 -translate-y-1/2 z-10 bg-white  shadow-xl rounded-l-xl py-2 hover:bg-gray-50 transition hidden lg:block"
           >
-            <ChevronRight size={32} className="text-slate-700" />
+            <ChevronRight size={40} />
           </button>
-          
         </div>
       </div>
     </div>
