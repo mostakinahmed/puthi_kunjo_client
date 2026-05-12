@@ -180,7 +180,7 @@ const Navbar = () => {
                 <a
                   key={item}
                   href="#"
-                  className={`text-[15px] font-medium whitespace-nowrap transition-colors ${
+                  className={`text-[18px] font-medium whitespace-nowrap transition-colors ${
                     item.includes("Just for you") ? "text-blue-600 font-bold" : "text-gray-700 hover:text-blue-600"
                   }`}
                 >
@@ -191,7 +191,7 @@ const Navbar = () => {
           </div>
           <div className="w-[95%] xl:w-[75%] mx-auto flex justify-between flex-wrap gap-x-6 gap-y-2 py-3">
             {categoryLinks.map((item) => (
-              <button key={item.name} className="flex items-center gap-1 text-[13px] font-medium hover:text-blue-600 whitespace-nowrap text-gray-700">
+              <button key={item.name} className="flex items-center gap-1 text-[15px] font-medium hover:text-blue-600 whitespace-nowrap text-gray-700">
                 {item.name}
                 {item.hasDropdown && <ChevronDown size={14} className="text-gray-400" />}
               </button>

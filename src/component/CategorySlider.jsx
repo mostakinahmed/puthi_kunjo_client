@@ -69,9 +69,9 @@ const CategorySlider = () => {
             {categories.map((cat, index) => (
               <div 
                 key={`${cat.id}-${index}`} 
-                className="flex flex-col items-center w-22 lg:w-34 cursor-pointer group/item snap-start active:scale-95 transition-transform"
+                className="flex flex-col items-center w-24 lg:w-34 cursor-pointer group/item snap-start active:scale-95 transition-transform"
               >
-                <div className="w-20 h-20 lg:w-28 lg:h-28 bg-white border border-gray-100 rounded-2xl flex items-center justify-center md:p-3 p-2 transition-all duration-300 group-hover/item:shadow-md lg:group-hover/item:border-blue-200">
+                <div className="w-22 h-22 lg:w-28 lg:h-28 bg-white border border-gray-100 rounded-2xl flex items-center justify-center md:p-3 p-2 transition-all duration-300 group-hover/item:shadow-md lg:group-hover/item:border-blue-200">
                   <img 
                     src={cat.image} 
                     alt={cat.name} 
