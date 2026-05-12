@@ -1,12 +1,15 @@
 import Footer from "../component/Footer";
+import Hero from "../component/Hero";
 import Navbar from "../component/Navbar";
 
 const Home = () => {
+    
     return (
         <div className="w-full min-h-screen bg-gray-100">
 
             {/* Navbar Full Width */}
             <Navbar />
+             <Hero />
 
             {/* Main Website Container */}
             <div className="w-[75%] mx-auto">
