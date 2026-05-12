@@ -38,7 +38,7 @@ const CategorySlider = () => {
   };
 
   return (
-    <div className="w-full lg:max-w-[75%] mx-auto py-4 lg:py-6">
+    <div className="px-2 md:max-w-[75%] mx-auto py-4 lg:py-6">
       <div className="bg-blue-50 border-y lg:border border-gray-300/70 overflow-hidden relative lg:rounded-md">
         
         <div className="hidden md:block p-4 lg:p-5 border-b border-gray-200 bg-white">
