@@ -126,7 +126,7 @@ const Navbar = () => {
                     sticky ? "text-2xl lg:text-3xl" : "text-3xl lg:text-4xl"
                   }`}
                 >
-                  বইঘর
+                  পুঁথিকুঞ্জ
                 </h1>
               </div>
 
