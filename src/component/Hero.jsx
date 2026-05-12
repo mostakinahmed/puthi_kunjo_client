@@ -22,7 +22,7 @@ const Hero = () => {
     <div className="w-[95%] lg:w-[75%]  md:h-[300px] h-[150px] mx-auto bg-white md:mt-18 mt-16 flex flex-col lg:flex-row gap-1">
 
       {/* LEFT - SLIDER */}
-      <div className="relative flex-1 overflow-hidden shadow-md">
+      <div className="relative flex-1 overflow-hidden">
 
         {/* Images */}
         {images.map((img, i) => (

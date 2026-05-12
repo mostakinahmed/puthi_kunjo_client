@@ -21,3 +21,13 @@ body {
 .animate-slideDown {
   animation: slideDown 0.3s ease;
 }
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

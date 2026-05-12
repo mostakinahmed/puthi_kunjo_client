@@ -1,3 +1,4 @@
+import CategorySlider from "../component/CategorySlider";
 import Footer from "../component/Footer";
 import Hero from "../component/Hero";
 import Navbar from "../component/Navbar";
@@ -10,6 +11,7 @@ const Home = () => {
             {/* Navbar Full Width */}
             <Navbar />
              <Hero />
+               <CategorySlider />
 
             {/* Main Website Container */}
             <div className="w-[75%] mx-auto">
