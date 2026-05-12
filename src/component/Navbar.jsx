@@ -13,15 +13,24 @@ import {
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check initial width and handle resize
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    
     const handleScroll = () => {
-      // Trigger the transition after 40px of scrolling
       setSticky(window.scrollY > 40);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", checkMobile);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", checkMobile);
+    };
   }, []);
 
   const topLinks = [
@@ -53,110 +62,52 @@ const Navbar = () => {
     "বেস্টসেলার অ্যাওয়ার্ড, ২৫",
     "আজকের অফার!",
     "বইমেলা ২০২৬",
-    "Just for you ✨", // Added sparkle emoji to match image
+    "Just for you ✨",
   ];
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-50 transition-all duration-300  ">
-        {/* MOBILE MENU */}
+      <header className="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        {/* MOBILE MENU (SIDEBAR) */}
         <div
-          className={`fixed inset-0 z-[999] lg:hidden transition-all duration-300 ${
+          className={`fixed inset-0 z-[1000] lg:hidden transition-all duration-300 ${
             mobileMenu ? "visible opacity-100" : "invisible opacity-0"
           }`}
         >
-          {/* Overlay */}
+          <div onClick={() => setMobileMenu(false)} className="absolute inset-0 bg-black/50" />
           <div
-            onClick={() => setMobileMenu(false)}
-            className="absolute inset-0 bg-black/50"
-          />
-
-          {/* Sidebar */}
-          <div
-            className={`absolute left-0 top-0 h-full w-[85%] max-w-[320px] bg-white shadow-md transition-transform duration-300 ${
+            className={`absolute left-0 top-0 h-full w-[80%] max-w-[320px] bg-white shadow-md transition-transform duration-300 ${
               mobileMenu ? "translate-x-0" : "-translate-x-full"
             }`}
           >
-            {/* Header */}
-            <div className="flex items-center justify-between px-5 py-4 border-b border-blue-400">
+            <div className="flex items-center justify-between px-5 py-3 border-b border-blue-400">
               <h1 className="text-2xl font-bold text-blue-600">পুঁথিকুঞ্জ</h1>
-
-              <button onClick={() => setMobileMenu(false)}>
-                <X size={26} />
-              </button>
+              <button onClick={() => setMobileMenu(false)}><X size={26} /></button>
             </div>
-
-            {/* Content */}
             <div className="h-[calc(100%-60px)] overflow-y-auto px-5 py-4 space-y-6">
-              {/* Search (Mobile) */}
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search books..."
-                  className="w-full border border-blue-300 rounded-md px-4 py-2 outline-none"
-                />
-                <Search
-                  size={18}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-500"
-                />
-              </div>
-
-              {/* MAIN LINKS */}
+              
               <div className="space-y-3">
                 <h3 className="text-sm font-semibold text-gray-500">Main</h3>
                 {middleLinks.map((item) => (
-                  <a
-                    key={item}
-                    href="#"
-                    className="block text-gray-700 hover:text-blue-600 text-sm"
-                    onClick={() => setMobileMenu(false)}
-                  >
-                    {item}
-                  </a>
+                  <a key={item} href="#" className="block text-gray-700 text-sm">{item}</a>
                 ))}
               </div>
-
-              {/* CATEGORY LINKS */}
               <div className="space-y-3 border-t pt-4">
-                <h3 className="text-sm font-semibold text-gray-500">
-                  Categories
-                </h3>
-
+                <h3 className="text-sm font-semibold text-gray-500">Categories</h3>
                 {categoryLinks.map((item) => (
-                  <button
-                    key={item.name}
-                    className="flex items-center justify-between w-full text-left text-gray-700 hover:text-blue-600 text-sm"
-                    onClick={() => setMobileMenu(false)}
-                  >
+                  <button key={item.name} className="flex items-center justify-between w-full text-gray-700 text-sm">
                     {item.name}
-                    {item.hasDropdown && (
-                      <ChevronDown size={14} className="text-gray-400" />
-                    )}
+                    {item.hasDropdown && <ChevronDown size={14} className="text-gray-400" />}
                   </button>
-                ))}
-              </div>
-
-              {/* TOP LINKS */}
-              <div className="space-y-3 border-t pt-4">
-                <h3 className="text-sm font-semibold text-gray-500">Support</h3>
-
-                {topLinks.map((item) => (
-                  <a
-                    key={item}
-                    href="#"
-                    className="block text-gray-600 text-sm hover:text-blue-600"
-                    onClick={() => setMobileMenu(false)}
-                  >
-                    {item}
-                  </a>
                 ))}
               </div>
             </div>
           </div>
         </div>
-        {/* 1. TOP BAR (Slides Up) */}
+
+        {/* 1. TOP BAR (Slides Up on Desktop Only) */}
         <div
-          className={`hidden lg:block w-full bg-gray-800 text-white text-sm transition-transform duration-300 ease-in-out  ${
+          className={`hidden lg:block w-full bg-gray-800 text-white text-sm transition-transform duration-300 ease-in-out ${
             sticky ? "-translate-y-full" : "translate-y-0"
           }`}
         >
@@ -167,88 +118,70 @@ const Navbar = () => {
             </div>
             <div className="flex items-center gap-5 text-gray-300">
               {topLinks.map((item) => (
-                <a key={item} href="#" className="hover:text-white text-sm">
-                  {item}
-                </a>
+                <a key={item} href="#" className="hover:text-white text-sm">{item}</a>
               ))}
             </div>
           </div>
         </div>
 
-        {/* 2. MIDDLE BAR (Stays Fixed, Moves up to fill Top Bar gap) */}
+        {/* 2. MIDDLE BAR (Stays Fixed on Mobile, Slides up on Desktop) */}
         <div
-          className="w-full bg-white  shadow-md transition-all duration-300 ease-in-out"
+          className="w-full bg-white shadow-md transition-all duration-300 ease-in-out"
           style={{
-            transform: sticky ? `translateY(-40px)` : `translateY(0px)`,
+            // KEY FIX: Only translate on Desktop (lg screens)
+            transform: (sticky && !isMobile) ? `translateY(-40px)` : `translateY(0px)`,
           }}
         >
           <div className="w-[95%] lg:w-[75%] mx-auto px-2 lg:px-4">
             <div className="flex items-center justify-between py-3">
               <div className="flex items-center gap-4">
-                <button
-                  className="lg:hidden"
-                  onClick={() => setMobileMenu(true)}
-                >
-                  <Menu size={28} />
-                </button>
-                <h1 className="text-2xl lg:text-4xl font-bold text-blue-600">
-                  পুঁথিকুঞ্জ
-                </h1>
+                <button className="lg:hidden" onClick={() => setMobileMenu(true)}><Menu size={28} /></button>
+                <h1 className="text-2xl lg:text-4xl font-bold text-blue-600 tracking-tight">পুঁথিকুঞ্জ</h1>
               </div>
 
+              {/* Desktop Search */}
               <div className="hidden md:flex flex-1 max-w-2xl mx-8 relative">
-                <input
-                  type="text"
-                  placeholder="Search books..."
-                  className="w-full border border-blue-400 rounded-full px-6 py-2.5 pr-14 outline-none"
-                />
-
-                <button className="absolute right-1 top-1/2 -translate-y-1/2 h-[82%] px-6 bg-blue-500 text-white rounded-full flex items-center justify-center">
+                <input type="text" placeholder="Search books..." className="w-full border border-blue-400 rounded-full px-6 py-2.5 pr-14 outline-none focus:ring-2 ring-blue-100" />
+                <button className="absolute right-1 top-1/2 -translate-y-1/2 h-[82%] px-6 bg-blue-500 text-white rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
                   <Search size={20} />
                 </button>
               </div>
 
               <div className="flex items-center gap-5">
-                <div className="hidden xl:flex items-center gap-2 cursor-pointer">
+                <div className="hidden xl:flex items-center gap-2 cursor-pointer hover:text-blue-600 transition-colors">
                   <Smartphone size={20} />
-                  <span className="text-sm">App</span>
+                  <span className="text-sm font-medium">App</span>
                 </div>
-                <div className="flex items-center gap-2 cursor-pointer">
+                <div className="flex items-center gap-2 cursor-pointer hover:text-blue-600 transition-colors">
                   <User size={22} />
-                  <span className="hidden lg:block text-sm">Sign in</span>
+                  <span className="hidden lg:block text-sm font-medium">Sign in</span>
                 </div>
-                <button className="relative">
+                <button className="relative p-1 hover:bg-gray-100 rounded-full transition-colors">
                   <ShoppingCart size={24} className="text-gray-700" />
-                  <span className="absolute -top-2 -right-2 h-5 w-5 bg-blue-600 text-white text-xs rounded-full flex items-center justify-center">
-                    2
-                  </span>
+                  <span className="absolute -top-1 -right-1 h-5 w-5 bg-blue-600 text-white text-[10px] rounded-full flex items-center justify-center border-2 border-white">2</span>
                 </button>
               </div>
             </div>
           </div>
         </div>
 
+        {/* 3. EXPANDED BOTTOM SECTION (Desktop Only) */}
         <div
           className={`hidden lg:block bg-white border-b border-gray-300 transition-all duration-300 ease-in-out overflow-hidden ${
-            sticky
-              ? "max-h-0 opacity-0 pointer-events-none"
-              : "max-h-60 opacity-100"
+            sticky ? "max-h-0 opacity-0 pointer-events-none" : "max-h-60 opacity-100"
           }`}
           style={{
             transform: sticky ? `translateY(-40px)` : `translateY(0px)`,
           }}
         >
-          <div className=" mx-auto border-b border-blue-400">
-            {/* MAIN LINKS (Row 1 from image_9c0980.png) */}
-            <div className="w-[95%] xl:w-[75%] mx-auto flex justify-center gap-6 py-1 mt-4 ">
+          <div className="border-b border-blue-400">
+            <div className="w-[95%] xl:w-[75%] mx-auto flex justify-center gap-6 py-2 mt-2">
               {middleLinks.map((item) => (
                 <a
                   key={item}
                   href="#"
-                  className={`text-[17px] font-medium whitespace-nowrap transition-colors ${
-                    item.includes("Just for you")
-                      ? "text-blue-600 font-bold"
-                      : "text-gray-700 hover:text-blue-600"
+                  className={`text-[15px] font-medium whitespace-nowrap transition-colors ${
+                    item.includes("Just for you") ? "text-blue-600 font-bold" : "text-gray-700 hover:text-blue-600"
                   }`}
                 >
                   {item}
@@ -256,24 +189,18 @@ const Navbar = () => {
               ))}
             </div>
           </div>
-          {/* CATEGORY LINKS (Row 2 from image_9c0980.png) */}
           <div className="w-[95%] xl:w-[75%] mx-auto flex justify-between flex-wrap gap-x-6 gap-y-2 py-3">
             {categoryLinks.map((item) => (
-              <button
-                key={item.name}
-                className="flex items-center gap-1 text-[15px] font-medium hover:text-blue-600 whitespace-nowrap"
-              >
+              <button key={item.name} className="flex items-center gap-1 text-[13px] font-medium hover:text-blue-600 whitespace-nowrap text-gray-700">
                 {item.name}
-                {item.hasDropdown && (
-                  <ChevronDown size={14} className="text-gray-400" />
-                )}
+                {item.hasDropdown && <ChevronDown size={14} className="text-gray-400" />}
               </button>
             ))}
           </div>
         </div>
       </header>
 
-      {/* PADDING TO PREVENT CONTENT UNDERLAP */}
+      {/* PADDING ADJUSTMENT */}
       <div className=" lg:h-[150px]" />
     </>
   );

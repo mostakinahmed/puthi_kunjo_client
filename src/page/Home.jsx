@@ -2,16 +2,18 @@ import CategorySlider from "../component/CategorySlider";
 import Footer from "../component/Footer";
 import Hero from "../component/Hero";
 import Navbar from "../component/Navbar";
+import SearchBox from "../component/SearchBox";
 
 const Home = () => {
-    
+
     return (
         <div className="w-full min-h-screen bg-gray-100">
 
             {/* Navbar Full Width */}
             <Navbar />
-             <Hero />
-               <CategorySlider />
+            <SearchBox/>
+            <Hero />
+            <CategorySlider />
 
             {/* Main Website Container */}
             <div className="w-[75%] mx-auto">

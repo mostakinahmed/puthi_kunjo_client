@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 
 const categories = [
@@ -23,7 +23,6 @@ const CategorySlider = () => {
   const scrollRef = useRef(null);
   const [showLeftBtn, setShowLeftBtn] = useState(false);
 
-  // Check if we should show the left button based on scroll position
   const handleScrollPosition = () => {
     if (scrollRef.current) {
       setShowLeftBtn(scrollRef.current.scrollLeft > 10);
@@ -33,65 +32,64 @@ const CategorySlider = () => {
   const scroll = (direction) => {
     if (scrollRef.current) {
       const { clientWidth } = scrollRef.current;
-      // Scroll by 80% of the visible width
       const scrollAmount = direction === 'left' ? -clientWidth * 0.8 : clientWidth * 0.8;
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
 
   return (
-    <div className="max-w-[95%] lg:max-w-[75%] mx-auto py-6">
-      <div className="bg-blue-50 border border-gray-300/70 overflow-hidden relative">
+    <div className="w-full lg:max-w-[75%] mx-auto py-4 lg:py-6">
+      <div className="bg-blue-50 border-y lg:border border-gray-300/70 overflow-hidden relative lg:rounded-md">
         
-        {/* Header Section */}
-        <div className="p-5 border-b border-gray-200 bg-white">
-          <h2 className="text-xl font-bold text-gray-800">Shop By Category</h2>
+        <div className="hidden md:block p-4 lg:p-5 border-b border-gray-200 bg-white">
+          <h2 className="text-lg lg:text-xl font-bold text-gray-800">Shop By Category</h2>
         </div>
 
-        {/* Categories Container */}
-        <div className="relative group px-8 py-8">
+        <div className="relative group px-2 lg:px-8 py-3 lg:py-8">
           
-          {/* Left Navigation Button */}
           {showLeftBtn && (
             <button 
               onClick={() => scroll('left')}
               className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 py-5 shadow-lg rounded-r-md hover:bg-gray-50 transition-all hidden lg:block"
             >
-              <ChevronLeft size={40} className="text-slate-700" />
+              <ChevronLeft size={32} className="text-slate-700" />
             </button>
           )}
 
-          {/* Scrollable Area */}
+          {/* 
+              MOBILE TWO-ROW FIX:
+              1. Changed 'flex' to 'grid grid-rows-2 lg:flex lg:items-start'
+              2. Added 'grid-flow-col' to ensure items flow horizontally into rows
+          */}
           <div 
             ref={scrollRef}
             onScroll={handleScrollPosition}
-            className="flex items-start gap-6 overflow-x-auto no-scrollbar scroll-smooth"
+            className="grid grid-rows-2 grid-flow-col lg:flex lg:items-start gap-1 lg:gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory"
           >
-            {categories.map((cat) => (
+            {categories.map((cat, index) => (
               <div 
-                key={cat.id} 
-                className="flex flex-col items-center  w-34 cursor-pointer group/item"
+                key={`${cat.id}-${index}`} 
+                className="flex flex-col items-center w-22 lg:w-34 cursor-pointer group/item snap-start active:scale-95 transition-transform"
               >
-                <div className="w-28 h-28 bg-white border border-gray-100 rounded-2xl flex items-center justify-center p-3 transition-all duration-300 group-hover/item:shadow-md group-hover/item:border-blue-200">
+                <div className="w-20 h-20 lg:w-28 lg:h-28 bg-white border border-gray-100 rounded-2xl flex items-center justify-center md:p-3 p-2 transition-all duration-300 group-hover/item:shadow-md lg:group-hover/item:border-blue-200">
                   <img 
                     src={cat.image} 
                     alt={cat.name} 
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <span className="mt-4 text-[15px] font-semibold text-slate-600 text-center leading-tight h-10 flex items-center">
+                <span className="mt-2 lg:mt-4 text-[12px] lg:text-[15px] font-semibold text-slate-600 text-center leading-tight h-8 lg:h-10 flex items-center">
                   {cat.name}
                 </span>
               </div>
             ))}
           </div>
 
-          {/* Right Navigation Button */}
           <button 
             onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 py-5  shadow-lg rounded-l-md hover:bg-gray-50 transition-all hidden lg:block"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 py-5 shadow-lg rounded-l-md hover:bg-gray-50 transition-all hidden lg:block"
           >
-            <ChevronRight size={40} className="text-slate-700" />
+            <ChevronRight size={32} className="text-slate-700" />
           </button>
           
         </div>
