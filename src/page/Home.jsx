@@ -18,7 +18,7 @@ const Home = () => {
             {/* Main Website Container */}
             <div className="w-[75%] mx-auto">
                 {/* Hero Section */}
-                <section className="w-full py-20">
+                <section className="w-full mt-5">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                         {/* Left Content */}

@@ -87,13 +87,13 @@ const Navbar = () => {
             <div className="h-[calc(100%-60px)] overflow-y-auto px-5 py-4 space-y-6">
               
               <div className="space-y-3">
-                <h3 className="text-sm font-semibold text-gray-500">Main</h3>
+                <h3 className="text-md font-semibold text-gray-500">Main</h3>
                 {middleLinks.map((item) => (
-                  <a key={item} href="#" className="block text-gray-700 text-sm">{item}</a>
+                  <a key={item} href="#" className="block text-gray-700 text-md">{item}</a>
                 ))}
               </div>
-              <div className="space-y-3 border-t pt-4">
-                <h3 className="text-sm font-semibold text-gray-500">Categories</h3>
+              <div className="space-y-3 border-t border-blue-400 pt-4">
+                <h3 className="text-md font-semibold text-gray-500">Categories</h3>
                 {categoryLinks.map((item) => (
                   <button key={item.name} className="flex items-center justify-between w-full text-gray-700 text-sm">
                     {item.name}
