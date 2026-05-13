@@ -63,10 +63,10 @@ const AuthorSlider = () => {
             {authors.map((author) => (
               <div 
                 key={author.id} 
-                className="flex flex-col items-center flex-shrink-0 w-24 lg:w-44 cursor-pointer group/item snap-start"
+                className="flex flex-col items-center flex-shrink-0 w-23 lg:w-44 cursor-pointer group/item snap-start"
               >
                 {/* Circular Image Wrapper - Scaled for mobile */}
-                <div className="w-24 h-24 lg:w-36 lg:h-36 rounded-full border-2 border-gray-200 overflow-hidden p-0.5 transition-all duration-300 group-hover/item:border-blue-400 group-hover/item:shadow-lg">
+                <div className="w-23 h-23 lg:w-36 lg:h-36 rounded-full border-2 border-gray-200 overflow-hidden p-0.5 transition-all duration-300 group-hover/item:border-blue-400 group-hover/item:shadow-lg">
                     <img 
                       src={author.image} 
                       alt={author.name} 
