@@ -59,7 +59,7 @@ const AuthorSlider = () => {
           <div 
             ref={scrollRef}
             onScroll={handleScroll}
-            className="grid grid-rows-2 grid-flow-col lg:flex lg:items-start gap-x-5 lg:gap-x-13 gap-y-3 overflow-x-auto no-scrollbar pb-6 lg:mb-7 scroll-smooth snap-x snap-mandatory"
+            className="grid grid-rows-2 grid-flow-col lg:flex lg:items-start gap-x-5 lg:gap-x-13 gap-y-5 overflow-x-auto no-scrollbar pb-6 lg:mb-7 scroll-smooth snap-x snap-mandatory"
           >
             {authors.map((author) => (
               <div 
@@ -67,7 +67,7 @@ const AuthorSlider = () => {
                 className="flex flex-col items-center flex-shrink-0 w-23 lg:w-44 cursor-pointer group/item snap-start"
               >
                 {/* Circular Image Wrapper - Scaled for mobile */}
-                <div className="w-23 h-23 lg:w-36 lg:h-36 rounded-full border-2 border-gray-200 overflow-hidden p-0.5 transition-all duration-300 group-hover/item:border-blue-400 group-hover/item:shadow-lg">
+                <div className="w-22 h-22 lg:w-36 lg:h-36 rounded-full border-2 border-gray-200 overflow-hidden p-0.5 transition-all duration-300 group-hover/item:border-blue-400 group-hover/item:shadow-lg">
                     <img 
                       src={author.image} 
                       alt={author.name} 
