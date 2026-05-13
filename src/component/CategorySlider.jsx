@@ -45,11 +45,11 @@ const CategorySlider = () => {
 
   return (
     <div className="md:max-w-[75%] w-[95%] mx-auto py-6">
-      <div className="md:bg-blue-50 md:border md:border-gray-200 overflow-hidden relative ">
+      <div className="bg-blue-50 p-1.5 py-3 md:border md:shadow-md shadow md:border-gray-100 overflow-hidden relative ">
 
         {/* HEADER */}
         <div className="hidden md:block px-5 py-3 bg-white">
-          <h2 className="text-xl font-bold text-gray-800">
+          <h2 className="text-xl font-semibold text-gray-800">
             Shop By Category
           </h2>
         </div>
@@ -61,9 +61,9 @@ const CategorySlider = () => {
           {showLeftBtn && (
             <button
               onClick={() => scroll("left")}
-              className="absolute left-0 cursor-pointer top-1/2 z-[100] -translate-y-1/2 z-10 bg-white  shadow-xl rounded-r-xl py-2 hover:bg-gray-50 transition hidden lg:block"
+              className="absolute left-0 cursor-pointer top-1/2 z-[100] -translate-y-1/2 z-10 bg-white  shadow-xl rounded-l-lg py-6 hover:bg-gray-50 transition hidden lg:block"
             >
-              <ChevronLeft size={40} />
+              <ChevronLeft size={32} />
             </button>
           )}
 
@@ -102,9 +102,9 @@ const CategorySlider = () => {
           {/* RIGHT BUTTON */}
           <button
             onClick={() => scroll("right")}
-            className="absolute right-0 cursor-pointer top-1/2 -translate-y-1/2 z-10 bg-white  shadow-xl rounded-l-xl py-2 hover:bg-gray-50 transition hidden lg:block"
+            className="absolute right-0 cursor-pointer top-1/2 -translate-y-1/2 z-10 bg-white  shadow-xl rounded-l-lg py-6 hover:bg-gray-50 transition hidden lg:block"
           >
-            <ChevronRight size={40} />
+            <ChevronRight size={32} />
           </button>
         </div>
       </div>

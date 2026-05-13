@@ -20,7 +20,7 @@ const SearchBox = ({
         value={value}
         onChange={(e) => onChange?.(e.target.value)}
         placeholder={placeholder}
-        className="w-full border border-blue-400 rounded-full px-6 py-2 pr-14 outline-none focus:ring-2 focus:ring-blue-300 transition"
+        className="w-full border bg-white border-blue-400 rounded-full px-6 py-2 pr-14 outline-none focus:ring-2 focus:ring-blue-300 transition"
       />
 
       <button
