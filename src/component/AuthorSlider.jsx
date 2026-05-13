@@ -76,7 +76,7 @@ const AuthorSlider = () => {
                 </div>
                 
                 {/* Author Name - Adjusted font size for mobile */}
-                <span className="mt-3 lg:mt-4 text-[13px] lg:text-[14px] font-medium text-gray-700 text-center leading-tight hover:text-blue-600 transition-colors">
+                <span className="mt-3 lg:mt-4 text-[12px] lg:text-[14px] font-medium text-gray-700 text-center leading-tight hover:text-blue-600 transition-colors line-clamp-1">
                   {author.name}
                 </span>
               </div>
