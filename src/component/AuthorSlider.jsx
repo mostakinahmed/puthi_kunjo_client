@@ -9,6 +9,10 @@ const authors = [
   { id: 5, name: "আরিফ আজাদ", image: "https://arifazad.com/wp-content/uploads/2021/07/207975994_232846598655025_3654725726196052157_n.jpg" },
   { id: 6, name: "মির্জা গালিব", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ47ylZSTMQ61exuZjor6MoI_s9mqrxQ99mUA&s" },
   { id: 7, name: "হুমায়ূন আহমেদ", image: "https://files.dainikshiksha.com/154097/conversions/Humayun-Ahmed-medium.webp" },
+  { id: 4, name: "ড. মিজানুর রহমান আজহারী", image: "https://pbs.twimg.com/profile_images/1339920183159230467/wHDa21Gw_400x400.jpg" },
+  { id: 5, name: "আরিফ আজাদ", image: "https://arifazad.com/wp-content/uploads/2021/07/207975994_232846598655025_3654725726196052157_n.jpg" },
+  { id: 6, name: "মির্জা গালিব", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ47ylZSTMQ61exuZjor6MoI_s9mqrxQ99mUA&s" },
+  { id: 7, name: "হুমায়ূন আহমেদ", image: "https://files.dainikshiksha.com/154097/conversions/Humayun-Ahmed-medium.webp" },
 ];
 
 const AuthorSlider = () => {
@@ -51,7 +55,7 @@ const AuthorSlider = () => {
               onClick={() => scroll('left')}
               className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 py-6 shadow-md rounded-r-md hover:bg-gray-50 transition-all hidden lg:block"
             >
-              <ChevronLeft size={28} className="text-gray-400" />
+              <ChevronLeft size={28} className="text-gray-700" />
             </button>
           )}
 
@@ -59,12 +63,12 @@ const AuthorSlider = () => {
           <div 
             ref={scrollRef}
             onScroll={handleScroll}
-            className="grid grid-rows-2 grid-flow-col lg:flex lg:items-start gap-x-5 lg:gap-x-13 gap-y-5 overflow-x-auto no-scrollbar pb-6 lg:mb-7 scroll-smooth snap-x snap-mandatory"
+            className="grid grid-rows-2 grid-flow-col lg:flex lg:items-start gap-x-5 lg:gap-x-8 gap-y-5 overflow-x-auto no-scrollbar pb-6 lg:mb-7 scroll-smooth snap-x snap-mandatory"
           >
             {authors.map((author) => (
               <div 
                 key={author.id} 
-                className="flex flex-col items-center flex-shrink-0 w-23 lg:w-44 cursor-pointer group/item snap-start"
+                className="flex flex-col items-center flex-shrink-0 w-23 lg:w-40 cursor-pointer group/item snap-start"
               >
                 {/* Circular Image Wrapper - Scaled for mobile */}
                 <div className="w-22 h-22 lg:w-36 lg:h-36 rounded-full border-2 border-gray-200 overflow-hidden p-0.5 transition-all duration-300 group-hover/item:border-blue-400 group-hover/item:shadow-lg">
