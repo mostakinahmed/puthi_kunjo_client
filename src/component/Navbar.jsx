@@ -141,7 +141,7 @@ const Navbar = () => {
 
               {/* Desktop Search */}
               <div className="hidden md:flex flex-1 max-w-2xl mx-8 relative">
-                <input type="text" placeholder="Search books..." className="w-full border border-blue-400 rounded-full px-6 py-2.5 pr-14 outline-none focus:ring-2 ring-blue-100" />
+                <input type="text" placeholder="Search books..." className="w-full border bg-white border-blue-400 rounded-full px-6 py-2.5 pr-14 outline-none focus:ring-2 ring-blue-100" />
                 <button className="absolute right-1 top-1/2 -translate-y-1/2 h-[82%] px-6 bg-blue-500 text-white rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
                   <Search size={20} />
                 </button>

@@ -7,7 +7,10 @@ function App() {
 
   return (
     <>
-      <Home/>
+    <div className="md:bg-gray-200 bg-gray-100">
+  <Home/>
+    </div>
+    
     </>
   )
 }

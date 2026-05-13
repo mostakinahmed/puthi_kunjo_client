@@ -7,7 +7,7 @@ import AuthorSlider from "../component/AuthorSlider";
 
 const Home = () => {
     return (
-        <div className="w-full min-h-screen md:bg-gray-200 bg-gray-100">
+        <div className="w-full min-h-screen ">
 
             {/* Navbar Full Width */}
             <Navbar />

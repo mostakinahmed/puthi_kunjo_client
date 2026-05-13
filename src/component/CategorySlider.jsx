@@ -45,7 +45,7 @@ const CategorySlider = () => {
 
   return (
     <div className="md:max-w-[75%] w-[95%] mx-auto py-6">
-      <div className="bg-blue-50 p-1.5 py-3 md:border md:shadow-md shadow md:border-gray-100 overflow-hidden relative ">
+      <div className="bg-blue-50 p-1.5 py-3 md:p-0 md:py-0 md:border md:shadow-md shadow md:border-gray-100 overflow-hidden relative ">
 
         {/* HEADER */}
         <div className="hidden md:block px-5 py-3 bg-white">
@@ -71,7 +71,7 @@ const CategorySlider = () => {
           <div
             ref={scrollRef}
             onScroll={handleScrollPosition}
-            className="grid grid-rows-2 grid-flow-col lg:flex lg:items-start gap-1 lg:gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory"
+            className="grid grid-rows-2 space-y-3 md:space-y-0 grid-flow-col lg:flex lg:items-start gap-1 lg:gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory"
           >
             {categories.map((cat) => (
               <div

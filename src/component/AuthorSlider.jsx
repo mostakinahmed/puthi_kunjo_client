@@ -68,7 +68,7 @@ const AuthorSlider = () => {
             {authors.map((author) => (
               <div 
                 key={author.id} 
-                className="flex flex-col items-center flex-shrink-0 w-23 lg:w-40 cursor-pointer group/item snap-start"
+                className="flex flex-col items-center flex-shrink-0 w-22 lg:w-40 cursor-pointer group/item snap-start"
               >
                 {/* Circular Image Wrapper - Scaled for mobile */}
                 <div className="w-22 h-22 lg:w-36 lg:h-36 rounded-full border-2 border-gray-200 overflow-hidden p-0.5 transition-all duration-300 group-hover/item:border-blue-400 group-hover/item:shadow-lg">
@@ -81,7 +81,7 @@ const AuthorSlider = () => {
                 </div>
                 
                 {/* Author Name - Adjusted font size for mobile */}
-                <span className="mt-3 lg:mt-4 text-[12px] lg:text-[14px] font-medium text-gray-700 text-center leading-tight hover:text-blue-600 transition-colors line-clamp-1">
+                <span className="mt-3 lg:mt-4 text-[12px] lg:text-[15px] font-medium text-gray-700 text-center leading-tight hover:text-blue-600 transition-colors line-clamp-1">
                   {author.name}
                 </span>
               </div>
