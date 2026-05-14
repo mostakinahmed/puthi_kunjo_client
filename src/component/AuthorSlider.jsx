@@ -103,7 +103,7 @@ const AuthorSlider = () => {
             <Link to={`/view-all/${author.ename}`}>
                  <div
                 key={author.id}
-                className="flex flex-col bg-red-400 items-center flex-shrink-0 w-22 lg:w-40 cursor-pointer group/item snap-start"
+                className="flex flex-col items-center flex-shrink-0 w-22 lg:w-40 cursor-pointer group/item snap-start"
               >
                 {/* Circular Image Wrapper - Scaled for mobile */}
                 <div className="w-22 h-22 lg:w-36 lg:h-36 rounded-full border-2 border-gray-200 overflow-hidden p-0.5 transition-all duration-300 group-hover/item:border-blue-400 group-hover/item:shadow-lg">
