@@ -6,13 +6,15 @@ import BookShowcaseH1 from "../component/BookShowcaseH1";
 import BookShowcaseH2 from "../component/BookShowcaseH2";
 import BookShowcaseH3 from "../component/BookShowcaseH3";
 import Navbar from "../component/Navbar";
+import ReviewSlider from "../component/ReviewSlider";
 
 const Home = () => {
+
     return (
         <div className="w-full min-h-screen ">
 
             {/* Navbar Full Width */}
-        
+
             <SearchBox />
             <Hero />
             <CategorySlider />
@@ -20,8 +22,9 @@ const Home = () => {
             <BookShowcaseH1 />
             <BookShowcaseH2 />
             <BookShowcaseH3 />
+            <ReviewSlider />
 
-         
+
         </div>
     );
 };

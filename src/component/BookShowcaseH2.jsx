@@ -180,7 +180,7 @@ const BookShowcaseH2 = () => {
   };
 
   return (
-    <div className="w-full lg:max-w-[75%] mx-auto md:py-8 px-2 lg:px-0">
+    <div className="w-full lg:max-w-[75%] mx-auto  px-2 lg:px-0">
       <div className="bg-white  shadow-md overflow-hidden relative">
         
         {/* Header Section (Matches image_d9e81b.jpg) */}

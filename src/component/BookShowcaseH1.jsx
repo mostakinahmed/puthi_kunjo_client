@@ -189,7 +189,7 @@ const BookShowcaseH1 = () => {
   };
 
   return (
-    <div className="w-full lg:max-w-[75%] mx-auto md:py-8 py-5 px-2 lg:px-0">
+    <div className="w-full lg:max-w-[75%] mx-auto md:py-6 py-5 px-2 lg:px-0">
       <div className="bg-white shadow-md overflow-hidden relative">
 
         {/* Header */}

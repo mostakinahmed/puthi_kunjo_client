@@ -66,7 +66,7 @@ const AuthorSlider = () => {
   };
 
   return (
-    <div className="w-full px-2 md:px-0 lg:max-w-[75%] mx-auto md:py-2">
+    <div className="w-full px-2 md:px-0 lg:max-w-[75%] mx-auto md:py-">
       <div className="bg-white shadow-md border border-slate-100 overflow-hidden relative">
 
         {/* Header Section */}
