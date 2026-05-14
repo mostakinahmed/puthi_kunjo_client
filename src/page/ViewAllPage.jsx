@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { Star, SlidersHorizontal, X } from "lucide-react";
+import {
+  Star,
+  SlidersHorizontal,
+  X,
+  ChevronDown,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const books = [
@@ -77,9 +82,19 @@ const books = [
 
 const categories = ["সব", "হজ্জ", "উমরাহ", "কুরবানী"];
 
+const sortOptions = [
+  "Best Seller",
+  "New Released",
+  "Price - Low to High",
+  "Price - High to Low",
+  "Discount - Low to High",
+  "Discount - High to Low",
+];
+
 const ViewAllPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("সব");
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+  const [selectedSort, setSelectedSort] = useState("");
 
   const filteredBooks =
     selectedCategory === "সব"
@@ -87,12 +102,13 @@ const ViewAllPage = () => {
       : books.filter((book) => book.category === selectedCategory);
 
   return (
-    <div className="w-full lg:max-w-[75%] mt-6 mx-auto px-3 lg:px-0 py-6 lg:py-10">
-      {/* Mobile Filter Button */}
+    <div className="w-full lg:max-w-[75%]  mx-auto px-3 md:mt-6 lg:px-0 lg:py-10">
+
+      {/* MOBILE FILTER BUTTON */}
       <div className="lg:hidden mb-4">
         <button
           onClick={() => setMobileFilterOpen(true)}
-          className="flex items-center gap-2 bg-white border border-gray-300 px-4 py-2 text-sm font-medium"
+          className="flex items-center gap-2 bg-white border border-gray-300 px-4 py-2 rounded-xl text-sm font-medium shadow-sm"
         >
           <SlidersHorizontal size={16} />
           Filters
@@ -100,7 +116,8 @@ const ViewAllPage = () => {
       </div>
 
       <div className="flex gap-6">
-        {/* Overlay */}
+
+        {/* OVERLAY */}
         {mobileFilterOpen && (
           <div
             onClick={() => setMobileFilterOpen(false)}
@@ -108,14 +125,15 @@ const ViewAllPage = () => {
           />
         )}
 
-        {/* Sidebar */}
+        {/* SIDEBAR */}
         <div
           className={`
             fixed lg:sticky top-0 left-0 z-50 lg:z-0
-            h-screen lg:h-fit
-            w-[280px] lg:w-[250px]
+            h-screen lg:h-fit overflow-y-auto
+            w-[290px] lg:w-[270px]
             bg-white border-r lg:border border-gray-200
-            p-5
+            p-5 rounded-none
+            transition-transform duration-300
             ${
               mobileFilterOpen
                 ? "translate-x-0"
@@ -123,88 +141,183 @@ const ViewAllPage = () => {
             }
           `}
         >
-          {/* Mobile header */}
+
+          {/* MOBILE HEADER */}
           <div className="flex items-center justify-between mb-6 lg:hidden">
-            <h2 className="text-lg font-semibold">Filters</h2>
+            <h2 className="text-lg font-bold">Filters</h2>
+
             <button onClick={() => setMobileFilterOpen(false)}>
-              <X size={20} />
+              <X size={22} />
             </button>
           </div>
 
-          {/* Desktop header */}
-          <h2 className="hidden lg:block text-lg font-semibold mb-6">
+          {/* DESKTOP HEADER */}
+          <h2 className="hidden lg:block text-xl font-bold mb-6 text-gray-800">
             Filter Books
           </h2>
 
-          {/* Categories */}
-          <div className="space-y-2">
-            <h3 className="text-sm font-semibold text-gray-700 mb-3">
-              Categories
-            </h3>
+          {/* CATEGORY SECTION */}
+          <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
 
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => {
-                  setSelectedCategory(cat);
-                  setMobileFilterOpen(false);
-                }}
-                className={`w-full text-left px-3 py-2 text-sm border
-                  ${
-                    selectedCategory === cat
-                      ? "bg-blue-500 text-white border-blue-500"
-                      : "bg-white hover:bg-gray-100 border-transparent"
-                  }
-                `}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+            <div className="px-4 py-4 border-b border-gray-100 bg-gray-50">
+              <h3 className="text-base font-bold text-gray-800">
+                Categories
+              </h3>
+            </div>
 
-          {/* Price */}
-          <div className="mt-8">
-            <h3 className="text-sm font-semibold mb-4">Price Range</h3>
+            <div className="p-3 space-y-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => {
+                    setSelectedCategory(cat);
+                    setMobileFilterOpen(false);
+                  }}
+                  className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200
+                    ${
+                      selectedCategory === cat
+                        ? "bg-blue-600 text-white shadow-md"
+                        : "hover:bg-gray-100 text-gray-700"
+                    }
+                  `}
+                >
+                  {cat}
 
-            <input type="range" className="w-full accent-blue-500" />
-
-            <div className="flex justify-between text-xs text-gray-500 mt-2">
-              <span>TK. 0</span>
-              <span>TK. 5000</span>
+                  {selectedCategory === cat && (
+                    <ChevronDown size={16} className="rotate-[-90deg]" />
+                  )}
+                </button>
+              ))}
             </div>
           </div>
+
+          {/* PRICE SECTION */}
+          <div className="mt-6 rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+
+            <div className="px-4 py-4 border-b border-gray-100 bg-gray-50">
+              <h3 className="text-base font-bold text-gray-800">
+                Price Range
+              </h3>
+            </div>
+
+            <div className="p-4">
+
+              <input
+                type="range"
+                className="w-full accent-blue-600"
+              />
+
+              <div className="flex justify-between text-xs text-gray-500 mt-3">
+                <span>TK 0</span>
+                <span>TK 5000</span>
+              </div>
+
+            </div>
+          </div>
+
+          {/* SORT SECTION */}
+          <div className="mt-6 rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+
+            {/* HEADER */}
+            <div className="flex items-center justify-between px-4 py-4 border-b border-gray-100 bg-gray-50">
+
+              <h2 className="text-base font-bold text-gray-800">
+                Sort
+              </h2>
+
+              <button
+                onClick={() => setSelectedSort("")}
+                className="text-xs font-semibold text-blue-600 hover:text-blue-700 transition"
+              >
+                Reset
+              </button>
+
+            </div>
+
+            {/* OPTIONS */}
+            <div className="p-3 space-y-1">
+
+              {sortOptions.map((item, index) => (
+                <label
+                  key={index}
+                  className="group flex items-center gap-3 px-3 py-3 rounded-xl cursor-pointer hover:bg-blue-50 transition-all duration-200"
+                >
+
+                  {/* CUSTOM RADIO */}
+                  <div className="relative">
+
+                    <input
+                      type="radio"
+                      name="sort"
+                      value={item}
+                      checked={selectedSort === item}
+                      onChange={(e) =>
+                        setSelectedSort(e.target.value)
+                      }
+                      className="peer hidden"
+                    />
+
+                    <div className="w-5 h-5 rounded-full border-2 border-gray-300 peer-checked:border-blue-600 transition" />
+
+                    <div className="absolute inset-[5px] rounded-full bg-blue-600 scale-0 peer-checked:scale-100 transition-transform duration-200" />
+
+                  </div>
+
+                  {/* TEXT */}
+                  <span className="text-sm font-medium text-gray-700 group-hover:text-blue-600 transition">
+                    {item}
+                  </span>
+
+                </label>
+              ))}
+
+            </div>
+          </div>
+
         </div>
 
-        {/* Products */}
+        {/* PRODUCTS */}
         <div className="flex-1 min-w-0">
-          {/* Topbar */}
-          <div className="bg-white border border-gray-200 px-4 py-3 mb-5 flex justify-between">
-            <h2 className="text-lg font-medium">সব বই সমূহ</h2>
+
+          {/* TOPBAR */}
+          <div className="bg-white  px-5 py-2.5 mb-5 flex items-center justify-between shadow-sm">
+
+            <h2 className="text-lg font-bold text-gray-800">
+              সব বই সমূহ
+            </h2>
+
             <p className="text-sm text-gray-500">
               {filteredBooks.length} Products
             </p>
+
           </div>
 
-          {/* Grid */}
+          {/* PRODUCT GRID */}
           <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-4">
+
             {filteredBooks.map((book) => (
-              <Link to="/view-all/details">
-                <div
-                  key={book.id}
-                  className="flex flex-col items-center cursor-pointer p-3 border border-transparent hover:border-slate-200 hover:shadow-md bg-white"
-                >
-                  {/* Image */}
-                  <div className="w-full aspect-[2/3] overflow-hidden">
+              <Link
+                key={book.id}
+                to="/view-all/details"
+              >
+
+                <div className="group flex flex-col items-center cursor-pointer p-3  border border-gray-200 hover:border-blue-200 hover:shadow-lg bg-white transition-all duration-300">
+
+                  {/* IMAGE */}
+                  <div className="w-full aspect-[2/3] overflow-hidden  bg-gray-100">
+
                     <img
                       src={book.image}
                       alt={book.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                     />
+
                   </div>
 
-                  {/* Info */}
+                  {/* INFO */}
                   <div className="mt-3 w-full text-center space-y-1">
-                    <h3 className="text-sm font-medium text-gray-700 line-clamp-2 h-10">
+
+                    <h3 className="text-sm font-semibold text-gray-700 line-clamp-2 h-10">
                       {book.title}
                     </h3>
 
@@ -212,34 +325,52 @@ const ViewAllPage = () => {
                       {book.author}
                     </p>
 
-                    {/* Rating */}
+                    {/* RATING */}
                     <div className="flex justify-center gap-0.5">
+
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          size={12}
+                          size={13}
                           fill={i < book.rating ? "#f59e0b" : "none"}
                           className={
-                            i < book.rating ? "text-amber-500" : "text-gray-200"
+                            i < book.rating
+                              ? "text-amber-500"
+                              : "text-gray-200"
                           }
                         />
                       ))}
+
                     </div>
 
-                    <p className="text-xs text-green-600">In Stock</p>
+                    <p className="text-xs font-medium text-green-600">
+                      In Stock
+                    </p>
 
-                    <div className="flex justify-center gap-2 pt-1">
+                    {/* PRICE */}
+                    <div className="flex justify-center items-center gap-2 pt-1">
+
                       <span className="text-xs text-gray-400 line-through">
                         TK {book.originalPrice}
                       </span>
-                      <span className="text-sm font-bold">TK {book.price}</span>
+
+                      <span className="text-sm font-bold text-gray-900">
+                        TK {book.price}
+                      </span>
+
                     </div>
+
                   </div>
+
                 </div>
+
               </Link>
             ))}
+
           </div>
+
         </div>
+
       </div>
     </div>
   );

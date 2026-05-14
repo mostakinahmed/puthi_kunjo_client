@@ -79,7 +79,7 @@ const Navbar = () => {
               <button className="absolute right-1 top-1/2 -translate-y-1/2 h-[85%] px-6 bg-blue-500 text-white rounded-full"><Search size={18} /></button>
             </div>
             {/* LIVE OFFER BUTTON */}
-            <button className="hidden md:block group relative overflow-hidden px-5 py-2 rounded-full bg-gradient-to-r from-red-500 via-pink-500 to-orange-500 text-white text-sm font-bold shadow-lg hover:shadow-red-300/50 transition-all duration-300 hover:scale-105">
+            <button className="hidden md:block group relative overflow-hidden px-5 py-2 rounded-full bg-gradient-to-r from-red-500 via-pink-500 to-orange-500 text-white text-xs font-bold shadow-lg hover:shadow-red-300/50 transition-all duration-300 hover:scale-105">
 
               {/* glowing background */}
               <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

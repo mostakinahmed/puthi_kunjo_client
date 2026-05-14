@@ -13,7 +13,7 @@ const SearchBox = ({
         e.preventDefault();
         onSubmit?.(value);
       }}
-      className={`relative w-full px-2 md:hidden mt-17 ${className}`}
+      className={`relative w-full px-2 md:hidden ${className}`}
     >
       <input
         type="text"
