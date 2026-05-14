@@ -1,17 +1,34 @@
-import { useState } from 'react'
 import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 import Home from './page/Home'
+import ViewAll from './page/ViewAll'
+
+import Navbar from './component/Navbar'
+import Footer from "./component/Footer";
+import ScrollTop from './component/ScrollTop'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-    <div className="md:bg-gray-200 bg-gray-100">
-  <Home/>
-    </div>
-    
-    </>
+    <BrowserRouter>
+
+      {/* Always open page from top */}
+      <ScrollTop />
+
+      <div className="md:bg-gray-200/60 bg-gray-100 min-h-screen">
+
+        <Navbar />
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/view-all" element={<ViewAll />} />
+        </Routes>
+
+        <Footer />
+
+      </div>
+    </BrowserRouter>
   )
 }
 

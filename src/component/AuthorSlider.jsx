@@ -41,10 +41,11 @@ const AuthorSlider = () => {
         <div className="flex items-center justify-between px-3 py-4 ">
           <h2 className="hidden md:block text-lg lg:text-xl font-semibold text-gray-800 tracking-tight">Buy Books of Top Authors</h2>
            <h2 className="md:hidden text-lg lg:text-xl font-semibold text-gray-800 tracking-tight">Popular Authors</h2>
-          <button className="text-xs lg:text-sm font-medium text-blue-500 border border-blue-500 px-3 lg:px-4 py-1.5 rounded hover:bg-blue-500 hover:text-white transition-colors">
+          <button className="text-xs lg:text-sm font-medium text-blue-500 border border-blue-500 px-3 lg:px-6 py-1.5 rounded hover:bg-blue-500 hover:text-white transition-colors">
             View All
           </button>
         </div>
+        
 
         {/* Slider Section */}
         <div className="relative px-2 lg:px-10 lg:py-2 bg-white">

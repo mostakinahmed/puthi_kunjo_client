@@ -9,6 +9,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
@@ -19,14 +20,14 @@ const Navbar = () => {
     // Check initial width and handle resize
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
     checkMobile();
-    
+
     const handleScroll = () => {
       setSticky(window.scrollY > 40);
     };
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", checkMobile);
-    
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", checkMobile);
@@ -70,22 +71,20 @@ const Navbar = () => {
       <header className="fixed top-0 left-0 w-full z-50 transition-all duration-300">
         {/* MOBILE MENU (SIDEBAR) */}
         <div
-          className={`fixed inset-0 z-[1000] lg:hidden transition-all duration-300 ${
-            mobileMenu ? "visible opacity-100" : "invisible opacity-0"
-          }`}
+          className={`fixed inset-0 z-[1000] lg:hidden transition-all duration-300 ${mobileMenu ? "visible opacity-100" : "invisible opacity-0"
+            }`}
         >
           <div onClick={() => setMobileMenu(false)} className="absolute inset-0 bg-black/50" />
           <div
-            className={`absolute left-0 top-0 h-full w-[80%] max-w-[320px] bg-white shadow-md transition-transform duration-300 ${
-              mobileMenu ? "translate-x-0" : "-translate-x-full"
-            }`}
+            className={`absolute left-0 top-0 h-full w-[80%] max-w-[320px] bg-white shadow-md transition-transform duration-300 ${mobileMenu ? "translate-x-0" : "-translate-x-full"
+              }`}
           >
             <div className="flex items-center justify-between px-5 py-3 border-b border-blue-400">
               <h1 className="text-2xl font-bold text-blue-600">পুঁথিকুঞ্জ</h1>
               <button onClick={() => setMobileMenu(false)}><X size={26} /></button>
             </div>
             <div className="h-[calc(100%-60px)] overflow-y-auto px-5 py-4 space-y-6">
-              
+
               <div className="space-y-3">
                 <h3 className="text-md font-semibold text-gray-500">Main</h3>
                 {middleLinks.map((item) => (
@@ -107,9 +106,8 @@ const Navbar = () => {
 
         {/* 1. TOP BAR (Slides Up on Desktop Only) */}
         <div
-          className={`hidden lg:block w-full bg-gray-800 text-white text-sm transition-transform duration-300 ease-in-out ${
-            sticky ? "-translate-y-full" : "translate-y-0"
-          }`}
+          className={`hidden lg:block w-full bg-gray-800 text-white text-sm transition-transform duration-300 ease-in-out ${sticky ? "-translate-y-full" : "translate-y-0"
+            }`}
         >
           <div className="w-[75%] mx-auto px-4 h-10 flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -134,10 +132,14 @@ const Navbar = () => {
         >
           <div className="w-[95%] lg:w-[75%] mx-auto px-2 lg:px-4">
             <div className="flex items-center justify-between py-3">
-              <div className="flex items-center gap-4">
-                <button className="lg:hidden" onClick={() => setMobileMenu(true)}><Menu size={28} /></button>
-                <h1 className="text-2xl lg:text-4xl font-bold text-blue-600 tracking-tight">পুঁথিকুঞ্জ</h1>
-              </div>
+
+              <Link to="/">
+                <div className="flex items-center gap-4">
+                  <button className="lg:hidden" onClick={() => setMobileMenu(true)}><Menu size={28} /></button>
+                  <h1 className="text-2xl lg:text-4xl font-bold text-blue-600 tracking-tight">পুঁথিকুঞ্জ</h1>
+                </div>
+              </Link>
+
 
               {/* Desktop Search */}
               <div className="hidden md:flex flex-1 max-w-2xl mx-8 relative">
@@ -167,9 +169,8 @@ const Navbar = () => {
 
         {/* 3. EXPANDED BOTTOM SECTION (Desktop Only) */}
         <div
-          className={`hidden lg:block bg-white border-b border-gray-300 transition-all duration-300 ease-in-out overflow-hidden ${
-            sticky ? "max-h-0 opacity-0 pointer-events-none" : "max-h-60 opacity-100"
-          }`}
+          className={`hidden lg:block bg-white border-b border-gray-300 transition-all duration-300 ease-in-out overflow-hidden ${sticky ? "max-h-0 opacity-0 pointer-events-none" : "max-h-60 opacity-100"
+            }`}
           style={{
             transform: sticky ? `translateY(-40px)` : `translateY(0px)`,
           }}
@@ -180,9 +181,8 @@ const Navbar = () => {
                 <a
                   key={item}
                   href="#"
-                  className={`text-[18px] font-medium whitespace-nowrap transition-colors ${
-                    item.includes("Just for you") ? "text-blue-600 font-bold" : "text-gray-700 hover:text-blue-600"
-                  }`}
+                  className={`text-[18px] font-medium whitespace-nowrap transition-colors ${item.includes("Just for you") ? "text-blue-600 font-bold" : "text-gray-700 hover:text-blue-600"
+                    }`}
                 >
                   {item}
                 </a>
