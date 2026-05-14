@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Star, SlidersHorizontal, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const books = [
   {
@@ -87,7 +88,6 @@ const ViewAllPage = () => {
 
   return (
     <div className="w-full lg:max-w-[75%] mt-10 mx-auto px-3 lg:px-0 py-6 lg:py-10">
-
       {/* Mobile Filter Button */}
       <div className="lg:hidden mb-4">
         <button
@@ -100,7 +100,6 @@ const ViewAllPage = () => {
       </div>
 
       <div className="flex gap-6">
-
         {/* Overlay */}
         {mobileFilterOpen && (
           <div
@@ -124,7 +123,6 @@ const ViewAllPage = () => {
             }
           `}
         >
-
           {/* Mobile header */}
           <div className="flex items-center justify-between mb-6 lg:hidden">
             <h2 className="text-lg font-semibold">Filters</h2>
@@ -179,7 +177,6 @@ const ViewAllPage = () => {
 
         {/* Products */}
         <div className="flex-1 min-w-0">
-
           {/* Topbar */}
           <div className="bg-white border border-gray-200 px-4 py-3 mb-5 flex justify-between">
             <h2 className="text-lg font-medium">সব বই সমূহ</h2>
@@ -190,67 +187,57 @@ const ViewAllPage = () => {
 
           {/* Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-4">
-
             {filteredBooks.map((book) => (
-              <div
-                key={book.id}
-                className="flex flex-col items-center cursor-pointer p-3 border border-transparent hover:border-slate-200 hover:shadow-md bg-white"
-              >
-
-                {/* Image */}
-                <div className="w-full aspect-[2/3] overflow-hidden">
-                  <img
-                    src={book.image}
-                    alt={book.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                {/* Info */}
-                <div className="mt-3 w-full text-center space-y-1">
-
-                  <h3 className="text-sm font-medium text-gray-700 line-clamp-2 h-10">
-                    {book.title}
-                  </h3>
-
-                  <p className="text-xs text-gray-500 truncate">
-                    {book.author}
-                  </p>
-
-                  {/* Rating */}
-                  <div className="flex justify-center gap-0.5">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        size={12}
-                        fill={i < book.rating ? "#f59e0b" : "none"}
-                        className={
-                          i < book.rating
-                            ? "text-amber-500"
-                            : "text-gray-200"
-                        }
-                      />
-                    ))}
+              <Link to="/view-all/details">
+                <div
+                  key={book.id}
+                  className="flex flex-col items-center cursor-pointer p-3 border border-transparent hover:border-slate-200 hover:shadow-md bg-white"
+                >
+                  {/* Image */}
+                  <div className="w-full aspect-[2/3] overflow-hidden">
+                    <img
+                      src={book.image}
+                      alt={book.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
 
-                  <p className="text-xs text-green-600">
-                    In Stock
-                  </p>
+                  {/* Info */}
+                  <div className="mt-3 w-full text-center space-y-1">
+                    <h3 className="text-sm font-medium text-gray-700 line-clamp-2 h-10">
+                      {book.title}
+                    </h3>
 
-                  <div className="flex justify-center gap-2 pt-1">
-                    <span className="text-xs text-gray-400 line-through">
-                      TK {book.originalPrice}
-                    </span>
-                    <span className="text-sm font-bold">
-                      TK {book.price}
-                    </span>
+                    <p className="text-xs text-gray-500 truncate">
+                      {book.author}
+                    </p>
+
+                    {/* Rating */}
+                    <div className="flex justify-center gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          size={12}
+                          fill={i < book.rating ? "#f59e0b" : "none"}
+                          className={
+                            i < book.rating ? "text-amber-500" : "text-gray-200"
+                          }
+                        />
+                      ))}
+                    </div>
+
+                    <p className="text-xs text-green-600">In Stock</p>
+
+                    <div className="flex justify-center gap-2 pt-1">
+                      <span className="text-xs text-gray-400 line-through">
+                        TK {book.originalPrice}
+                      </span>
+                      <span className="text-sm font-bold">TK {book.price}</span>
+                    </div>
                   </div>
-
                 </div>
-
-              </div>
+              </Link>
             ))}
-
           </div>
         </div>
       </div>

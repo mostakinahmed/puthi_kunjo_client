@@ -2,11 +2,13 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Home from './page/Home'
-import ViewAll from './page/ViewAll'
+import ViewAll from './page/ViewAllPage'
 
 import Navbar from './component/Navbar'
 import Footer from "./component/Footer";
 import ScrollTop from './component/ScrollTop'
+import ProductDetails from './page/ProductDetailsPage'
+import OrderPage from './page/OrderPage'
 
 function App() {
 
@@ -23,6 +25,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/view-all" element={<ViewAll />} />
+             <Route path="/view-all/details" element={<ProductDetails />} />
+              <Route path="/place-order" element={<OrderPage />} />
         </Routes>
 
         <Footer />

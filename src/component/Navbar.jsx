@@ -76,7 +76,7 @@ const Navbar = () => {
         >
           <div onClick={() => setMobileMenu(false)} className="absolute inset-0 bg-black/50" />
           <div
-            className={`absolute left-0 top-0 h-full w-[80%] max-w-[320px] bg-white shadow-md transition-transform duration-300 ${mobileMenu ? "translate-x-0" : "-translate-x-full"
+            className={`absolute left-0 top-0 h-full w-[60%] max-w-[320px] bg-white shadow-md transition-transform duration-300 ${mobileMenu ? "translate-x-0" : "-translate-x-full"
               }`}
           >
             <div className="flex items-center justify-between px-5 py-3 border-b border-blue-400">
@@ -133,12 +133,14 @@ const Navbar = () => {
           <div className="w-[95%] lg:w-[75%] mx-auto px-2 lg:px-4">
             <div className="flex items-center justify-between py-3">
 
-              <Link to="/">
-                <div className="flex items-center gap-4">
-                  <button className="lg:hidden" onClick={() => setMobileMenu(true)}><Menu size={28} /></button>
+
+              <div className="flex items-center gap-4">
+                <button className="lg:hidden" onClick={() => setMobileMenu(true)}><Menu size={28} /></button>
+                <Link to="/">
                   <h1 className="text-2xl lg:text-4xl font-bold text-blue-600 tracking-tight">পুঁথিকুঞ্জ</h1>
-                </div>
-              </Link>
+                </Link>
+              </div>
+
 
 
               {/* Desktop Search */}
