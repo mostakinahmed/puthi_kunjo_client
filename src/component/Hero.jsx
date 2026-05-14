@@ -19,7 +19,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="w-[95%] lg:w-[75%]  md:h-[300px] h-[150px] mx-auto bg-white md:mt-18 mt-2.5 flex flex-col lg:flex-row gap-1">
+    <div className="w-[95%] lg:w-[75%]  md:h-[300px] h-[150px] mx-auto bg-white md:mt-16 mt-2.5 flex flex-col lg:flex-row gap-1">
 
       {/* LEFT - SLIDER */}
       <div className="relative flex-1 overflow-hidden">

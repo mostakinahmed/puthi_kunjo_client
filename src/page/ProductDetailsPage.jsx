@@ -40,7 +40,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="w-full md:mt-6 mt-11 min-h-screen py-6 lg:py-12">
+    <div className="w-full md:mt-4  min-h-screen lg:py-12">
       <div className="max-w-[95%] lg:max-w-[75%] mx-auto">
 
         {/* MAIN PRODUCT SECTION */}

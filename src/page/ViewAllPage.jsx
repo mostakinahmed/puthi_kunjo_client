@@ -87,7 +87,7 @@ const ViewAllPage = () => {
       : books.filter((book) => book.category === selectedCategory);
 
   return (
-    <div className="w-full lg:max-w-[75%] mt-10 mx-auto px-3 lg:px-0 py-6 lg:py-10">
+    <div className="w-full lg:max-w-[75%] mt-6 mx-auto px-3 lg:px-0 py-6 lg:py-10">
       {/* Mobile Filter Button */}
       <div className="lg:hidden mb-4">
         <button

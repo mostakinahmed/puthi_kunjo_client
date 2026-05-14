@@ -25,7 +25,7 @@ const OrderPage = () => {
   const total = subtotal + shippingCharge;
 
   return (
-    <div className="w-full mt-10   min-h-screen py-8 ">
+    <div className="w-full md:mt-16   min-h-screen ">
       <div className="max-w-[95%] lg:max-w-[75%] mx-auto">
       
 
