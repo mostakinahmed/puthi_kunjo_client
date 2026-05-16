@@ -42,7 +42,7 @@ const Hero = () => {
             <button
               key={i}
               onClick={() => setIndex(i)}
-              className={`h-2.5 w-2.5 rounded-full transition ${
+              className={`md:h-2.5 md:w-2.5 h-2 w-2 rounded-full transition ${
                 i === index ? "bg-blue-600 w-4" : "bg-white/70"
               }`}
             />

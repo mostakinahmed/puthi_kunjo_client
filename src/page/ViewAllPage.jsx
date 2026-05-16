@@ -105,14 +105,29 @@ const ViewAllPage = () => {
     <div className="w-full lg:max-w-[75%]  mx-auto px-3 md:mt-6 lg:px-0 lg:py-10">
 
       {/* MOBILE FILTER BUTTON */}
-      <div className="lg:hidden mb-4">
-        <button
-          onClick={() => setMobileFilterOpen(true)}
-          className="flex items-center gap-2 bg-white border border-gray-300 px-4 py-2 rounded-xl text-sm font-medium shadow-sm"
-        >
-          <SlidersHorizontal size={16} />
-          Filters
-        </button>
+      <div className="flex gap-3">
+        <div className="lg:hidden mb-4">
+          <button
+            onClick={() => setMobileFilterOpen(true)}
+            className="flex items-center gap-2 bg-white  px-4 py-2 rounded-xl text-sm font-medium shadow-sm"
+          >
+            <SlidersHorizontal size={16} />
+            Filters
+          </button>
+        </div>
+        {/* TOPBAR */}
+        <div className="bg-white w-full md:hidden  px-5 py-1.5 mb-5 flex items-center rounded-xl justify-between shadow-sm">
+
+          <h2 className=" font-medium text-gray-800">
+            সব বই সমূহ
+          </h2>
+
+          <p className="text-sm text-gray-500">
+            {filteredBooks.length}
+          </p>
+
+        </div>
+
       </div>
 
       <div className="flex gap-6">
@@ -134,10 +149,9 @@ const ViewAllPage = () => {
             bg-white border-r lg:border border-gray-200
             p-5 rounded-none
             transition-transform duration-300
-            ${
-              mobileFilterOpen
-                ? "translate-x-0"
-                : "-translate-x-full lg:translate-x-0"
+            ${mobileFilterOpen
+              ? "translate-x-0"
+              : "-translate-x-full lg:translate-x-0"
             }
           `}
         >
@@ -174,10 +188,9 @@ const ViewAllPage = () => {
                     setMobileFilterOpen(false);
                   }}
                   className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200
-                    ${
-                      selectedCategory === cat
-                        ? "bg-blue-600 text-white shadow-md"
-                        : "hover:bg-gray-100 text-gray-700"
+                    ${selectedCategory === cat
+                      ? "bg-blue-600 text-white shadow-md"
+                      : "hover:bg-gray-100 text-gray-700"
                     }
                   `}
                 >
@@ -280,7 +293,7 @@ const ViewAllPage = () => {
         <div className="flex-1 min-w-0">
 
           {/* TOPBAR */}
-          <div className="bg-white  px-5 py-2.5 mb-5 flex items-center justify-between shadow-sm">
+          <div className="bg-white hidden md:flex  px-5 py-2.5 mb-5 flex items-center justify-between shadow-sm">
 
             <h2 className="text-lg font-bold text-gray-800">
               সব বই সমূহ
@@ -293,7 +306,7 @@ const ViewAllPage = () => {
           </div>
 
           {/* PRODUCT GRID */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-4 -mt-1.5">
 
             {filteredBooks.map((book) => (
               <Link
@@ -301,7 +314,7 @@ const ViewAllPage = () => {
                 to="/view-all/details"
               >
 
-                <div className="group flex flex-col items-center cursor-pointer p-3  border border-gray-200 hover:border-blue-200 hover:shadow-lg bg-white transition-all duration-300">
+                <div className="group flex flex-col items-center cursor-pointer p-3  border border-gray-200 hover:border-blue-300 hover:shadow-lg bg-white transition-all duration-300">
 
                   {/* IMAGE */}
                   <div className="w-full aspect-[2/3] overflow-hidden  bg-gray-100">

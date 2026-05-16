@@ -51,7 +51,7 @@ const ReviewSlider = () => {
       <div className="text-center mb-10">
        
 
-        <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 mt-2">
+        <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mt-2">
           What Readers Say
         </h2>
 
