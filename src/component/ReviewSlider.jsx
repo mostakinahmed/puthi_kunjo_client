@@ -86,7 +86,7 @@ const ReviewSlider = () => {
         {reviews.map((item) => (
           <SwiperSlide key={item.id}>
 
-            <div className="group h-full bg-white border border-gray-200 rounded-3xl p-4 shadow-sm hover:shadow-xl transition-all duration-500">
+            <div className="group h-full bg-white border border-gray-200 p-4 shadow-sm hover:shadow-xl transition-all duration-500">
 
               {/* TOP */}
               <div className="flex items-center gap-4">
